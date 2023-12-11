@@ -1,6 +1,6 @@
 {
   "name": "chunavexpress-cms",
-  "description": "A blank template to get started with Payload",
+  "description": "Designed by Nikhil swami",
   "version": "1.0.0",
   "main": "dist/server.js",
   "license": "MIT",
@@ -8,7 +8,7 @@
     "rdeploy": "ssh bbp \" source ~/.nvm/nvm.sh && cd chunavexpress.com/backend/ && git pull && pnpm i && pnpm build:main && pnpm sync-env && pnpm start \"",
     "build:main": " cross-env NODE_ENV=production pnpm copyfiles && payload build && pnpm tsc",
     "start": "pm2 start ./ecosystem.config.cjs ",
-    "sync-env": "scp -r .env bbp:chunavexpress.com/backend/.env",
+    "sync-env": "scp .env bbp:chunavexpress.com/backend/.env",
     "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon",
     "serve:prod": "cross-env PAYLOAD_CONFIG_PATH=dist/payload.config.js NODE_ENV=production node dist/server.js",
     "tsc": "tsc",
