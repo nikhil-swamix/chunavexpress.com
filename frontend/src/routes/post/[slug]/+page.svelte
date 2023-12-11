@@ -36,7 +36,7 @@
 		</div>
 		{#key langpref}
 			{#each data.docs as doc}
-				<SinglePost {doc} />
+				<SinglePost {doc} {langpref} />
 			{/each}
 		{/key}
 	</div>

@@ -40,7 +40,7 @@
 	<div class="row g-0">
 		{#each data?.docs as doc}
 			<div class=" col-lg-3 px-lg-3 my-2 border-0 d-block">
-				<a class="card-text text-sm" href="https://chunavexpress.com/post/{doc.slug}">
+				<a class="card-text text-sm" href="/post/{doc.slug}">
 					<div class="col-auto p-0" style="width: 100%; height:12em">
 						<div class=" h-100 rounded" style="background-image: url('{doc.banner.url}');background-size: cover; background-position: center;" />
 					</div>

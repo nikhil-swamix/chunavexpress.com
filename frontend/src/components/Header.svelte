@@ -1,6 +1,8 @@
 <script>
 	import { onMount } from 'svelte';
 	import Swiper from 'swiper';
+	import { Autoplay } from 'swiper/modules';
+	Swiper.use([Autoplay]);
 
 	let menuCategories = [
 		{ name: 'Latest News', icon: 'fa-fw fa-solid fa-bolt', link: '/' },
@@ -16,21 +18,15 @@
 	onMount(() => {
 		var swiper = new Swiper('.swiper', {
 			slidesPerView: 'auto',
-			freeMode: true
-			// loop: true
+			freeMode: true,
+			loop: true,
+			autoplay: {
+				delay: 3000,
+				disableOnInteraction: false,
+				stopOnLastSlide: false
+			}
 		});
 	});
-	/*
-	1. Latest News
-	2. Politics 
-	3. Loksabha Elections 2024
-	4. Assembly Elections 2023
-		A. Madhyapradesh Elections
-		B. Chhattisgarh Elections
-		C. Rajasthan Elections
-		D. Telangana Elections
-		E. Mizoram Elections
-	*/
 </script>
 
 <header id="mvp-main-head-wrap" class="">
@@ -58,13 +54,13 @@
 		</div>
 
 		<div class="  px-2 pt-3">
-			<div id="mvp-main-nav-bot-cont" class="mvp-main-box border rounded-2 shadow-sm container p-0">
-				<div class="swiper">
+			<div id="mvp-main-nav-bot-cont" class="mvp-main-box border rounded-2 shadow-sm container">
+				<div class="swiper w-auto w-lg-100">
 					<!-- Additional required wrapper -->
 					<div class="swiper-wrapper">
 						<!-- Slides -->
 						{#each menuCategories as category}
-							<div class="swiper-slide w-auto p-2">
+							<div class="swiper-slide">
 								<li class="menu-item">
 									<a href={category.link} target="blank" class="">
 										<i class={category.icon} />
@@ -73,7 +69,7 @@
 								</li>
 							</div>
 						{/each}
-						<div class="swiper-slide w-auto p-2">
+						<div class="swiper-slide">
 							<li class="menu-item">
 								<div class="dropdown">
 									<button class="btn dropdown-toggle p-0 m-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">Assembly Elections 2023</button>
@@ -87,7 +83,7 @@
 								</div>
 							</li>
 						</div>
-						<div class="swiper-slide w-auto p-2">
+						<div class="swiper-slide">
 							<li class="menu-item">
 								<a href="https://www.youtube.com/@chunavexpress" target="blank" class="text-danger">
 									<i class="fab fa-youtube" />
@@ -95,11 +91,7 @@
 								</a>
 							</li>
 						</div>
-						<div class="swiper-slide w-auto px-5 mx-5 d-lg-none">
-							<div class="" />
-						</div>
 					</div>
-					<ul class="menu flex-wrap py-2 py-md-1" />
 				</div>
 			</div>
 		</div>
@@ -111,7 +103,7 @@
 		color: #dc3545 !important;
 	}
 	.swiper {
-		overflow: visible !important;
+		// overflow: visible !important;
 		z-index: 999 !important;
 	}
 	.dropdown-menu {
@@ -119,9 +111,10 @@
 	}
 
 	.swiper-slide {
-		padding: 1em 0.5em;
+		padding: 0.5em 0.5em;
 		display: flex;
 		align-items: center;
+		width: fit-content;
 		// background-color: #000;
 
 		a:visited {

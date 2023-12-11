@@ -1,3 +1,4 @@
 .vscode
 *.7z
 .env
+*-lock*

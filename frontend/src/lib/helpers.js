@@ -21,7 +21,6 @@ export async function latestPosts() {
 	// console.log(data);
 	data.docs.map((post) => {
 		if (post.banner) post.banner.url = mediaURL + post.banner.url;
-		// https://source.unsplash.com/random/900x700/?fruit
 		else post.banner = { url: '/elections/2.jpg' };
 	});
 
