@@ -2,7 +2,7 @@
 	"name": "frontend",
 	"version": "1.0.0",
 	"scripts": {
-		"rdeploy": "..\\runner.exe && pnpm sync-env && ssh bbp \" source ~/.nvm/nvm.sh && cd chunavexpress.com/frontend/ && git pull && pnpm i && pnpm build && pnpm start \"",
+		"rdeploy": "pnpm sync-env && ssh bbp \" source ~/.nvm/nvm.sh && cd chunavexpress.com/frontend/ && git pull && pnpm i && pnpm build && pnpm start \"",
 		"sync-env": "scp .env bbp:chunavexpress.com/frontend/.env ",
 		"build": "vite build",
 		"dev": "vite",

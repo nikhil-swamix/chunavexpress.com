@@ -11,6 +11,9 @@ export default defineConfig({
 		port: 3001,
 		host: true
 	},
+	preview: {
+		port: 3001,
+	},
 	build: {}
 
 	// assetsInclude: 'static/**'
