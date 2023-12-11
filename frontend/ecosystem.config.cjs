@@ -1,7 +1,7 @@
 module.exports = {
   apps: [{
     name: "che-frontend",
-    script: "bun ./build/index.js",
+    script: "pnpm prod",
     env: {
       PORT: 3001
     },
