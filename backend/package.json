@@ -5,9 +5,9 @@
   "main": "dist/server.js",
   "license": "MIT",
   "scripts": {
-    "rdeploy": "ssh bbp \" source ~/.nvm/nvm.sh && cd chunavexpress.com/backend/ && git pull && pnpm i && pnpm build:main && pnpm sync-env && pnpm start \"",
+    "rdeploy": "pnpm sync-env && ssh bbp \" source ~/.nvm/nvm.sh && cd chunavexpress.com/backend/ && git pull && pnpm i && pnpm build:main && pnpm start \"",
     "build:main": " cross-env NODE_ENV=production pnpm copyfiles && payload build && pnpm tsc",
-    "start": "pm2 start ./ecosystem.config.cjs ",
+    "start": "pm2 start ecosystem.config.cjs ",
     "sync-env": "scp .env bbp:chunavexpress.com/backend/.env",
     "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon",
     "serve:prod": "cross-env PAYLOAD_CONFIG_PATH=dist/payload.config.js NODE_ENV=production node dist/server.js",
