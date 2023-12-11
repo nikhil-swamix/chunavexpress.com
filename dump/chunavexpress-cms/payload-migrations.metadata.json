@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"key":{"createdAt":{"$numberInt":"1"}},"name":"createdAt_1","background":true}],"uuid":"44d03d2a6db04568ade65cf9b19242dd","collectionName":"payload-migrations","type":"collection"}
