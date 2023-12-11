@@ -5,7 +5,7 @@ import htmlPurge from 'vite-plugin-purgecss';
 
 export default defineConfig({
 	// https://vitejs.dev/config/
-	plugins: [sveltekit({})],
+	plugins: [sveltekit({}), htmlPurge({})],
 	server: {
 		open: false,
 		port: 3001,
