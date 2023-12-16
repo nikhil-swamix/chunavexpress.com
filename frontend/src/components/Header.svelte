@@ -40,18 +40,18 @@
 </script>
 
 <header id="mvp-main-head-wrap" class="">
-	<nav id="mvp-main-nav-top" class="row m-0 w-100 m-0">
-		<div class="social-bar d-flex flex-wrap">
-			<div class="col-md-auto mx-md-auto mx-0 ps-lg-3 branding pt-2">
+	<nav id="mvp-main-nav-top" class="row w-100 m-0 p-0">
+		<div class="social-bar d-flex p-0 py-2">
+			<div class="col-md-auto col-12 mx-md-auto mx-0 ps-lg-3 branding pt-2 px-0">
 				<a href="/">
-					<img src="/logo-min.webp" alt="Chunavexpress" class="m-0 rounded-2 img-fluid" height="64" width="64" />
+					<img src="/logo-min.webp" alt="Chunavexpress" class="m-0 rounded-2 img-fluid me-lg-3" height="64" width="auto" />
 				</a>
-				<h1 class=" px-lg-2 d-flex align-items-center justify-content-center m-0">
-					<span class="text-danger"> ChunavExpress </span>
-					<div class=" d-inline">
-						<div class="btn-group btn-group-sm ms-2" role="group" aria-label="Basic radio toggle button group">
-							<a class="btn btn-{langpref == 'english' ? 'dark' : 'outline-dark'}" href="./?lang=en">English</a>
-							<a class="btn btn-{langpref == 'hindi' ? 'dark' : 'outline-dark'}" href="./?lang=hi">हिंदी</a>
+				<h1 class=" d-flex align-items-center justify-content-center m-0  px-lg-2">
+					<span class="text-danger me-lg-3 px-lg-0 px-2"> Chunav Express </span>
+					<div id="langpref" class="d-inline ms-lg-4">
+						<div class="btn-group btn-group-sm " role="group" aria-label="Basic radio toggle button group">
+							<a class="btn  btn-{langpref == 'english' ? 'dark' : 'outline-dark'}" href="./?lang=en">English</a>
+							<a class="btn  btn-{langpref == 'hindi' ? 'dark' : 'outline-dark'}" href="./?lang=hi">हिंदी</a>
 						</div>
 					</div>
 					<!-- <div class="spinner-grow mx-1" style="width: 1rem; height: 1rem" role="status">
@@ -78,7 +78,7 @@
 						{#each menuCategories as category}
 							<div class="swiper-slide">
 								<li class="menu-item">
-									<a href={category.link} target="blank" class="">
+									<a href={category.link} target="blank" class="text-white">
 										<i class={category.icon} />
 										{category.name}
 									</a>
@@ -88,7 +88,7 @@
 						<div class="swiper-slide">
 							<li class="menu-item">
 								<div class="dropdown">
-									<button class="btn dropdown-toggle p-0 m-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">Assembly Elections 2023</button>
+									<button class="btn dropdown-toggle p-0 m-0 text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">Assembly Elections 2023</button>
 									<ul class="dropdown-menu position-absolute">
 										<li><a class="dropdown-item" target="blank" href="/categories/madhyapradesh-elections">Madhya Pradesh</a></li>
 										<li><a class="dropdown-item" target="blank" href="/categories/chhattisgarh-elections">Chhattisgarh</a></li>
@@ -125,6 +125,11 @@
 	.dropdown-menu {
 		z-index: 999 !important;
 	}
+	#langpref .btn{
+		@media (max-width: 768px) {
+			font-size: 0.75em;
+		}
+	}
 
 	.swiper-slide {
 		padding: 0.5em 0.5em;
@@ -152,7 +157,7 @@
 			text-transform: uppercase;
 			font-family: 'Montserrat';
 			@media (max-width: 768px) {
-				font-size: 1.2em;
+				font-size: 1em;
 			}
 		}
 		h2 {
@@ -173,8 +178,8 @@
 			background: rgba(255, 255, 255, 0.5);
 			color: #000;
 			border-radius: 0.5em;
-			font-size: 1.2em;
-			margin-left: 10px;
+			font-size: 1em;
+
 			width: 2em;
 			height: 2em;
 			display: flex;

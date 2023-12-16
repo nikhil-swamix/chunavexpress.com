@@ -8,10 +8,10 @@ export async function fetchjson(url) {
 
 export async function getVideos() {
 	// let url = 'http://localhost:3000/api/youtube';
-	let url = 'https://chunavexpress.com/api/youtube';
+	let url = 'https://chunavexpress.com/api/youtube?limit=20';
 	const res = await fetch(url);
 	const data = await res.json();
-	// console.log(data);
+	console.log(data);
 	return data.docs;
 }
 

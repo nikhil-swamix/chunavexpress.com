@@ -47,7 +47,7 @@
 		{/each}
 	</div>
 	<div class="row mx-0 px-0 my-lg-3 px-lg-2 pe-xxl-3">
-		<h2 class="text-center bg-danger rounded">LATEST POSTS</h2>
+		<h2 class="text-center bg-danger rounded text-white">LATEST POSTS</h2>
 		<div class="col-lg px-1 mx-auto">
 			{#key langpref}
 				{#await initializeLangpref()}
