@@ -4,35 +4,28 @@
 	import SinglePost from '../components/SinglePost.svelte';
 	import { onMount } from 'svelte';
 	import * as helpers from '$lib/helpers.js';
+	import { page } from '$app/stores';
 	let langpref = '';
-	let updateLangpref = (pref) => {
-		langpref = pref;
-		window.localStorage['langpref'] = pref;
-		return langpref;
-	};
+	// console.log($page.url.searchParams.get('lang'));
+
 	async function initializeLangpref() {
-		if (window.localStorage['langpref']) {
-			langpref = window.localStorage['langpref'];
+		if ($page.url.searchParams.get('lang')) {
+			langpref = $page.url.searchParams.get('lang') == 'en' ? 'english' : 'hindi';
+		} else {
+			langpref = 'hindi';
 		}
 		return langpref;
-		console.log(langpref);
+	}
+	$: {
+		langpref = $page.url.searchParams.get('lang') == 'en' ? 'english' : 'hindi';
+
 	}
 
-	// onMount(initializeLangpref);
+	langpref = initializeLangpref();
 </script>
 
 <section class="  container mx-auto">
-	<div class="d-flex align-self-lg-start align-items-center justify-content-center py-4 px-lg-0 text-center">
-		<h3 class=" p-lg-0 m-0">Language</h3>
-		<div class=" d-inline">
-			<div class="btn-group btn-group-sm ms-2" role="group" aria-label="Basic radio toggle button group">
-				<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked={langpref == 'english'} on:click={() => (langpref = updateLangpref('english'))} />
-				<label class="btn btn-outline-dark" for="btnradio1">English</label>
-
-				<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked={langpref == 'hindi'} on:click={() => (langpref = updateLangpref('hindi'))} />
-				<label class="btn btn-outline-dark" for="btnradio2">हिंदी </label>
-			</div>
-		</div>
+	<div class="d-flex align-self-lg-start align-items-center justify-content-center py-2 px-lg-0 text-center">
 		<!-- <hr class="text-secondary" /> -->
 		<!-- <hr /> -->
 		<br />
@@ -44,13 +37,17 @@
 					<div class="col-auto p-0" style="width: 100%; height:12em">
 						<div class=" h-100 rounded" style="background-image: url('{doc.banner.url}');background-size: cover; background-position: center;" />
 					</div>
-					{doc.title_hindi || doc.title}
+					{#if langpref == 'hindi'}
+						{doc.title_hindi}
+					{:else}
+						{doc.title}
+					{/if}
 				</a>
 			</div>
 		{/each}
 	</div>
-	<h2 class="text-center">नवीनतम पोस्ट्स - Latest Posts</h2>
-	<div class="row mx-0 px-0 my-lg-5 px-lg-2 pe-xxl-3">
+	<div class="row mx-0 px-0 my-lg-3 px-lg-2 pe-xxl-3">
+		<h2 class="text-center bg-danger rounded">LATEST POSTS</h2>
 		<div class="col-lg px-1 mx-auto">
 			{#key langpref}
 				{#await initializeLangpref()}

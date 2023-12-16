@@ -112,23 +112,7 @@ span.mvp-nav-search-but {
 	z-index: 999999;
 }
 
-.branding {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
 
-.branding img {
-	width: auto;
-	height: 2.5em;
-	margin: 0 1em;
-}
-
-.branding h2 {
-	font-family: "oswald";
-	font-weight: 200;
-	text-transform: uppercase;
-}
 
 #mvp-main-head-wrap {
 	width: 100%;

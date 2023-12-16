@@ -9,6 +9,6 @@ export async function load({ params }) {
 		// https://source.unsplash.com/random/900x700/?fruit
 		else post.banner = { url: '/elections/2.jpg' };
 	});
-	console.log(data);
+	// console.log(data);
 	return data;
 }

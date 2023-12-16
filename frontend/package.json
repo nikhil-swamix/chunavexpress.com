@@ -9,8 +9,6 @@
 		"prod": "vite preview",
 		"start": "pm2 start ecosystem.config.cjs",
 		".copytoremote": "scp -r build/ bbp:chunavexpress.com/frontend/build/ && scp -r ./package.json bbp:chunavexpress.com/frontend/",
-		"ls": "dir",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch"
 	},
 	"devDependencies": {

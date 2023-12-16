@@ -21,9 +21,6 @@
 		title = doc.title;
 		body = doc?.body_english?.root.children.length > 1 && doc.body_english;
 	}
-	// console.log('doc', doc);
-	console.log(langpref);
-	// console.log(checksum);
 
 	body?.root?.children?.map((item) => {
 		let sub_children = item.children.map((leaf) => {
@@ -53,7 +50,7 @@
 		// if (window.localStorage['langpref']) {
 		// 	langpref = window.localStorage['langpref'];
 		// }
-		console.log('body', body);
+		// console.log('body', body);
 	});
 </script>
 
@@ -65,7 +62,7 @@
 			<a href="https://chunavexpress.com/post/{doc.slug}" target="single" type="button" class="btn btn-sm btn-dark">
 				<i class="fa-solid fa-arrow-up-right-from-square" /> Open
 			</a>
-			<button type="button" id="popover{checksum}" class="btn btn-sm btn-dark ">
+			<button type="button" id="popover{checksum}" class="btn btn-sm btn-dark">
 				<i class="fa-solid fa-link" /> Share
 			</button>
 			<Popover target="popover{checksum}" placement="bottom" title={`Share This Post`}>
