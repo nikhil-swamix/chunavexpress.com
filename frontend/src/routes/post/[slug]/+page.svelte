@@ -2,19 +2,16 @@
 	export let data;
 	import SinglePost from '../../../components/SinglePost.svelte';
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 
 	// console.log(data);
 
 	let langpref;
-	let updateLangpref = (pref) => {
-		langpref = pref;
-		window.localStorage['langpref'] = pref;
-		// console.log('langpref', langpref);
-		return langpref;
-	};
-	onMount(() => {
-		langpref = localStorage.getItem('langpref') || 'english';
-	});
+
+	$: {
+		langpref = $page.url.searchParams.get('lang') == 'en' ? 'english' : 'hindi';
+
+	}
 </script>
 
 <div class=" row mx-0 px-lg-3">
@@ -22,7 +19,6 @@
 		<!-- <h3 class="pb-1"><i class="fa-solid fa-fire text-danger" /> Trending Posts</h3> -->
 	</div>
 	<div class="col-12 col-lg-6 px-lg-3">
-		
 		{#key langpref}
 			{#each data.docs as doc}
 				<SinglePost {doc} {langpref} />

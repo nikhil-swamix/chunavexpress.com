@@ -50,8 +50,8 @@
 					<span class="text-danger me-lg-3 px-lg-0 px-2"> Chunav Express </span>
 					<div id="langpref" class="d-inline ms-lg-4">
 						<div class="btn-group btn-group-sm " role="group" aria-label="Basic radio toggle button group">
-							<a class="btn  btn-{langpref == 'english' ? 'dark' : 'outline-dark'}" href="./?lang=en">English</a>
-							<a class="btn  btn-{langpref == 'hindi' ? 'dark' : 'outline-dark'}" href="./?lang=hi">हिंदी</a>
+							<a class="btn  btn-{langpref == 'english' ? 'dark' : 'outline-dark'}" href="?lang=en">English</a>
+							<a class="btn  btn-{langpref == 'hindi' ? 'dark' : 'outline-dark'}" href="?lang=hi">हिंदी</a>
 						</div>
 					</div>
 					<!-- <div class="spinner-grow mx-1" style="width: 1rem; height: 1rem" role="status">
