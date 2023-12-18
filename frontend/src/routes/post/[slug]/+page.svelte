@@ -6,24 +6,24 @@
 
 	// console.log(data);
 
-	let langpref;
+	let langpref, title, description;
 
 	$: {
 		langpref = $page.url.searchParams.get('lang') == 'en' ? 'english' : 'hindi';
+		title = langpref == 'hindi' ? data.docs[0].title_hindi : data.docs[0].title;
+		description = body.root.children[0].children[0].text;
 	}
-	console.log($page.url);
 	let body = langpref == 'hindi' ? data.docs[0].body_hindi : data.docs[0].body_english;
-	let description = body.root.children[0].children[0].text
-	let title = langpref == 'hindi' ? data.docs[0].title_hindi : data.docs[0].title;
+	console.log(title);
 </script>
 
 <svelte:head>
 	<!-- Replace these values with your specific metadata -->
 	<title>{title}</title>
-	<meta property="og:title" content="{title}" />
-	<meta property="og:description" content="{description}" />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
 	<meta property="og:image" content={data.docs[0].meta.image.url} />
-	<meta property="og:url" content="{$page.url.href}" />
+	<meta property="og:url" content={$page.url.href} />
 	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
