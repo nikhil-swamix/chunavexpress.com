@@ -14,12 +14,13 @@
 	console.log($page.url);
 	let body = langpref == 'hindi' ? data.docs[0].body_hindi : data.docs[0].body_english;
 	let description = body.root.children[0].children[0].text
+	let title = langpref == 'hindi' ? data.docs[0].title_hindi : data.docs[0].title;
 </script>
 
 <svelte:head>
 	<!-- Replace these values with your specific metadata -->
-	<title>{data.docs[0].title}</title>
-	<meta property="og:title" content={data.docs[0].title} />
+	<title>{title}</title>
+	<meta property="og:title" content="{title}" />
 	<meta property="og:description" content="{description}" />
 	<meta property="og:image" content={data.docs[0].meta.image.url} />
 	<meta property="og:url" content="{$page.url.href}" />
