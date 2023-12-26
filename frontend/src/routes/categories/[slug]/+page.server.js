@@ -1,7 +1,7 @@
 import { baseURL, mediaURL, fetchjson } from '$lib/helpers';
 
 export async function load({ params }) {
-	let url = `http://localhost:3000/api/posts?where[category.title][equals]=${params.slug}`;
+	let url = `https://chunavexpress.com/api/posts?where[category.title][equals]=${params.slug}`;
 	let data = await fetchjson(url);
 
 	data.docs.map((post) => {

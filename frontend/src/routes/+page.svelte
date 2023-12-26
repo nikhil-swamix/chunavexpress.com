@@ -74,7 +74,7 @@
 				<p>loading...</p>
 			{:then videos}
 				{#each videos as video}
-					<div class="">
+					<div class="mt-lg-4">
 						<iframe
 							class="rounded-4 overflow-hidden"
 							title="YouTube video player"

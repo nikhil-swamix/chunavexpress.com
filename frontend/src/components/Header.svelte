@@ -20,6 +20,12 @@
 		langpref = $page.url.searchParams.get('lang') == 'en' ? 'english' : 'hindi';
 		console.log('asjiled', langpref);
 	}
+	let categoryTranslator = {
+		"home": "घर",
+		"politics": "राजनीति",
+		"loksabha 2024": "लोकसब्हा",
+		"assembly-elections-2023": "असेंसि राजनीति 2023",
+	}
 
 	onMount(() => {
 		var swiper = new Swiper('.swiper', {
@@ -88,7 +94,7 @@
 						<div class="swiper-slide">
 							<li class="menu-item">
 								<div class="dropdown">
-									<button class="btn dropdown-toggle p-0 m-0 text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">Assembly Elections 2023</button>
+									<button class="btn dropdown-toggle p-0 m-0 text-white" type="button" data-bs-toggle="dropdown" >Assembly Elections 2023</button>
 									<ul class="dropdown-menu position-absolute">
 										<li><a class="dropdown-item" target="blank" href="/categories/madhyapradesh-elections">Madhya Pradesh</a></li>
 										<li><a class="dropdown-item" target="blank" href="/categories/chhattisgarh-elections">Chhattisgarh</a></li>

@@ -2,6 +2,8 @@
 	export let data;
 	import SinglePost from '../../../components/SinglePost.svelte';
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
+	import * as helpers from '$lib/helpers.js';
 
 	let langpref;
 	let updateLangpref = (pref) => {
@@ -10,48 +12,49 @@
 		// console.log('langpref', langpref);
 		return langpref;
 	};
+	$: {
+		$page.url.searchParams.get('lang') == 'en' ? (langpref = 'english') : (langpref = 'hindi');
+	}
 	onMount(() => {
 		langpref = localStorage.getItem('langpref') || 'english';
 	});
 </script>
 
-<div class=" row mx-0 px-lg-3">
-	<div class="col-12 col-lg-3 pt-3 px-lg-5">
-		<h3 class="pb-1"><i class="fa-solid fa-fire text-danger" /> Trending Posts</h3>
-		<!--  -->
-		<hr />
-		<div class="card my-2 border-0 d-none">
-			<div class="row g-0">
-				<div class="col-md-4 p-0" style="min-height: 8em;">
-					<div class=" h-100 rounded" style="background-image: url('https://chunavexpress.com/elections/2.jpg');background-size: cover; background-position: center;" />
-				</div>
-				<div class="col-md-8">
-					<div class="card-body p-1 px-3">
-						<p class="card-text text-sm">
-							Upcoming latest news will be displayed here, bookmark our site to stay updated! आगामी नवीनतम समाचार यहां प्रदर्शित किए जाएंगे, हमारी साइट को बुकमार्क करें ताकि आप अद्यतित रहें।
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-12 col-lg-6 px-lg-3">
+<div class=" row d-flex justify-content-center px-lg-3">
+	<div class="col-12 col-lg-8 px-lg-3">
 		<div class="d-flex w-100 align-self-lg-start align-items-center col-lg-3 py-3 pb-lg-0 px-0 px-lg-0 text-center">
-			<h3 class=" p-lg-0 m-0">Latest News in</h3>
-			<div class=" d-inline">
-				<div class="btn-group btn-group-sm ms-2" role="group" aria-label="Basic radio toggle button group">
-					<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked={langpref == 'english'} on:click={() => (langpref = updateLangpref('english'))} />
-					<label class="btn btn-outline-dark" for="btnradio1">English</label>
-
-					<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked={langpref == 'hindi'} on:click={() => (langpref = updateLangpref('hindi'))} />
-					<label class="btn btn-outline-dark" for="btnradio2">हिंदी </label>
-				</div>
-			</div>
+			<h3 class=" p-lg-0 m-0">
+				Showing {data.docs.length} Posts from
+				<button class="btn btn-danger p-1">
+					{$page.params.slug}
+				</button>
+			</h3>
 		</div>
 		{#key langpref}
 			{#each data.docs as doc}
 				<SinglePost {doc} {langpref} />
 			{/each}
 		{/key}
+	</div>
+	<div class="col-lg-3 pt-lg-3">
+		<h3 class="pb-1"><i class="fa-solid fa-fire text-danger" /> Trending Now</h3>
+		{#await helpers.getVideos()}
+			<p>loading...</p>
+		{:then videos}
+			{#each videos.slice(0, 3) as video}
+				<div class=" mt-lg-3">
+					<iframe
+						class="rounded-4 overflow-hidden"
+						title="YouTube video player"
+						id="ytplayer"
+						type="text/html"
+						width="100%"
+						height="240"
+						src={`https://www.youtube.com/embed/${video.videoId}?autoplay=1&controls=0`}
+						frameborder="0"
+					/>
+				</div>
+			{/each}
+		{/await}
 	</div>
 </div>
