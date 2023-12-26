@@ -6,7 +6,7 @@
 	Swiper.use([Autoplay]);
 
 	let menuCategories = [
-		{ name: 'Latest News', icon: 'fa-fw fa-solid fa-bolt', link: '/' },
+		{ name: 'Home', icon: 'fa-fw fa-solid fa-bolt', link: '/' },
 		{ name: 'Politics', icon: 'fa-fw fa-solid fa-scale-unbalanced', link: '/categories/politics' },
 		{ name: 'Loksabha 2024', icon: 'fa-fw fa-solid fa-landmark-dome', link: '/categories/loksabha' }
 		// { name: 'Assembly Elections 2023', icon: 'fa-fw fa-solid fa-landmark', link: './' },
@@ -46,12 +46,12 @@
 				<a href="/">
 					<img src="/logo-min.webp" alt="Chunavexpress" class="m-0 rounded-2 img-fluid me-lg-3" height="64" width="auto" />
 				</a>
-				<h1 class=" d-flex align-items-center justify-content-center m-0  px-lg-2">
+				<h1 class=" d-flex align-items-center justify-content-center m-0 px-lg-2">
 					<span class="text-danger me-lg-3 px-lg-0 px-2"> Chunav Express </span>
 					<div id="langpref" class="d-inline ms-lg-4">
-						<div class="btn-group btn-group-sm " role="group" aria-label="Basic radio toggle button group">
-							<a class="btn  btn-{langpref == 'english' ? 'dark' : 'outline-dark'}" href="?lang=en">English</a>
-							<a class="btn  btn-{langpref == 'hindi' ? 'dark' : 'outline-dark'}" href="?lang=hi">हिंदी</a>
+						<div class="btn-group btn-group-sm" role="group" aria-label="Basic radio toggle button group">
+							<a class="btn btn-{langpref == 'english' ? 'dark' : 'outline-dark'}" href="?lang=en">English</a>
+							<a class="btn btn-{langpref == 'hindi' ? 'dark' : 'outline-dark'}" href="?lang=hi">हिंदी</a>
 						</div>
 					</div>
 					<!-- <div class="spinner-grow mx-1" style="width: 1rem; height: 1rem" role="status">
@@ -116,7 +116,10 @@
 
 <style lang="less">
 	.text-danger {
-		color: #dc3545 !important;
+		color: #b71c1c !important;
+	}
+	.bg-danger {
+		background-color: #b71c1c !important;
 	}
 	.swiper {
 		overflow-y: visible !important;
@@ -125,7 +128,7 @@
 	.dropdown-menu {
 		z-index: 999 !important;
 	}
-	#langpref .btn{
+	#langpref .btn {
 		@media (max-width: 768px) {
 			font-size: 0.75em;
 		}

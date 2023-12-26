@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { Button, Popover } from 'sveltestrap';
+	// import { Button, Popover } from 'sveltestrap';
 	import md5 from 'md5';
 
 	export let doc, langpref;
@@ -46,6 +46,10 @@
 			renders.push(render);
 		});
 	});
+	function copy2clipboard () {
+		navigator.clipboard.writeText(`https://chunavexpress.com/post/${doc.slug}`);
+		alert('Link Copied to Clipboard!');
+	}
 	onMount(() => {
 		// if (window.localStorage['langpref']) {
 		// 	langpref = window.localStorage['langpref'];
@@ -57,17 +61,17 @@
 {#if body}
 	<div class="card border-2 mb-5 mt-lg-3 shadow">
 		<div class="post-head {lgSpacer}">
-			<h2 class="pt-lg-2 py-2">{@html title}</h2>
-
-			<a href="https://chunavexpress.com/post/{doc.slug}" target="single" type="button" class="btn btn-sm btn-dark">
-				<i class="fa-solid fa-arrow-up-right-from-square" /> Open
+			
+			<a href="https://chunavexpress.com/post/{doc.slug}" target="single" type="button" class="" >
+				<h2 class="pt-lg-2 py-2">{@html title}</h2>
+				<!-- <i class="fa-solid fa-arrow-up-right-from-square" /> Open -->
 			</a>
-			<button type="button" id="popover{checksum}" class="btn btn-sm btn-dark">
+			<button type="button" id="popover{checksum}" class="btn btn-sm btn-dark" on:click={copy2clipboard}>
 				<i class="fa-solid fa-link" /> Share
 			</button>
-			<Popover target="popover{checksum}" placement="bottom" title={`Share This Post`}>
+			<!-- <Popover target="popover{checksum}" placement="bottom" title={`Share This Post`}>
 				https://chunavexpress.com/post/{doc.slug}
-			</Popover>
+			</Popover> -->
 
 			<p class="mt-0 text-black">
 				<!-- By {doc?.author?.email?.split('@')[0] || ''}, Last Updated On : {doc.updatedAt.split('T')[0] || ''} -->
