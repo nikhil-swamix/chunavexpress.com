@@ -5,14 +5,14 @@ import htmlPurge from 'vite-plugin-purgecss';
 
 export default defineConfig({
 	// https://vitejs.dev/config/
-	plugins: [sveltekit({}), htmlPurge({})],
+	plugins: [sveltekit({})],
 	server: {
 		open: false,
 		port: 3001,
 		host: true
 	},
 	preview: {
-		port: 3001,
+		port: 3001
 	},
 	build: {}
 
