@@ -5,23 +5,16 @@
 	import { onMount } from 'svelte';
 	import * as helpers from '$lib/helpers.js';
 	import { page } from '$app/stores';
-	let langpref = '';
+
+	let langpref;
 	let showdocs;
 
 	// doc['body_' + langpref]?.root?.children?.length
 	// filter if lang not available
 
-	async function initializeLangpref() {
-		if ($page.url.searchParams.get('lang')) {
-			langpref = $page.url.searchParams.get('lang') == 'en' ? 'english' : 'hindi';
-		} else {
-			langpref = 'hindi';
-		}
-		return langpref;
-	}
 	$: {
-		langpref = initializeLangpref();
-		showdocs = data.docs.filter((doc) => doc['body_' + langpref]?.root?.children?.length > 1).slice(0, 12);
+		langpref = $page.url.searchParams.get('lang') == 'en' ? 'english' : 'hindi';
+		showdocs = data.docs.filter((doc) => doc['body_' + langpref]?.root?.children[0].children.length >= 1).slice(0, 12);
 		console.log(showdocs.length, langpref);
 	}
 	// slice 12 posts
@@ -32,7 +25,7 @@
 	{#key langpref}
 		<div class="row g-0">
 			{#each showdocs as doc}
-				{#if doc['body_' + langpref]?.root?.children?.length > 1}
+				{#if doc['body_' + langpref]?.root?.children?.length >= 0}
 					<div class=" col-lg-3 px-lg-3 my-2 border-0 d-block">
 						<a class="card-text text-sm" href="/post/{doc.slug}">
 							<div class="col-auto p-0" style="width: 100%; height:12em">
@@ -45,21 +38,15 @@
 							{/if}
 						</a>
 					</div>
-					<!-- {console.log(doc)} -->
-					<!-- content here -->
 				{/if}
 			{/each}
 		</div>
 		<div class="row mx-0 px-0 my-lg-3 px-lg-2 pe-xxl-3">
 			<h2 class="text-center bg-danger rounded text-white">LATEST POSTS</h2>
 			<div class="col-lg px-1 mx-auto">
-				{#await initializeLangpref()}
-					<p>loading...</p>
-				{:then langpref}
-					{#each data?.docs as doc}
-						<SinglePost {doc} {langpref} />
-					{/each}
-				{/await}
+				{#each data?.docs as doc}
+					<SinglePost {doc} {langpref} />
+				{/each}
 			</div>
 			<div class="col-lg-4 ps-lg-4 pe-lg-0 px-0">
 				<div class="spon-content rounded-3 shadow overflow-hidden">

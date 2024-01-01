@@ -20,6 +20,7 @@ export async function getVideos() {
 export async function latestPosts() {
 	// http://localhost:3000/api/posts
 	let data = await (await fetch(baseURL + '/posts?limit=14')).json();
+	console.log("ashiled debugger")
 
 	data.docs.map((post) => {
 		if (post.banner) post.banner.url = mediaURL + post.banner.url;
