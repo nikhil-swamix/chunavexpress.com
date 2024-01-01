@@ -19,8 +19,8 @@ export async function getVideos() {
 
 export async function latestPosts() {
 	// http://localhost:3000/api/posts
-	let data = await (await fetch(baseURL + '/posts?limit=12')).json();
-	// console.log(data);
+	let data = await (await fetch(baseURL + '/posts?limit=14')).json();
+
 	data.docs.map((post) => {
 		if (post.banner) post.banner.url = mediaURL + post.banner.url;
 		else post.banner = { url: '/elections/2.jpg' };

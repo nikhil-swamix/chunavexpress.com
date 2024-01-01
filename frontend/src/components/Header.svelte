@@ -18,7 +18,7 @@
 	let langpref;
 	function getLangPref() {
 		langpref = $page.url.searchParams.get('lang') == 'en' ? 'english' : 'hindi';
-		console.log('asjiled', langpref);
+
 	}
 	let categoryTranslator = {
 		"home": "घर",
