@@ -3,7 +3,16 @@
 	import Swiper from 'swiper';
 	import { Autoplay } from 'swiper/modules';
 	import { page } from '$app/stores';
+	import langAvailability from '$lib/stores/langAvailability.js';
 	Swiper.use([Autoplay]);
+	let langpref;
+
+	// if homepage lang availability true english and hindi
+
+	if ($page.url.pathname == '/') {
+		$langAvailability.hindi = true;
+		$langAvailability.english = true;
+	}
 
 	let menuCategories = [
 		{ name: 'Home', icon: 'fa-fw fa-solid fa-bolt', link: '/' },
@@ -15,7 +24,6 @@
 		// { name: 'Panchayat', icon: 'fa-fw fa-solid fa-chess-king', link: './' },
 		// { name: 'UP Elections', icon: 'fa-fw fa-solid fa-bullhorn', link: './' }
 	];
-	let langpref;
 	function getLangPref() {
 		langpref = $page.url.searchParams.get('lang') == 'en' ? 'english' : 'hindi';
 	}
@@ -39,6 +47,7 @@
 		});
 	});
 	$: {
+		console.log($langAvailability);
 		langpref = $page.url.searchParams.get('lang') == 'en' ? 'english' : 'hindi';
 	}
 	getLangPref();
@@ -55,8 +64,12 @@
 					<span class="text-danger me-lg-3 px-lg-0 px-2"> Chunav Express </span>
 					<div id="langpref" class="d-inline ms-lg-4">
 						<div class="btn-group btn-group-sm" role="group" aria-label="Basic radio toggle button group">
-							<a class="btn btn-{langpref == 'english' ? 'dark' : 'outline-dark'}" href="?lang=en">English</a>
-							<a class="btn btn-{langpref == 'hindi' ? 'dark' : 'outline-dark'}" href="?lang=hi">हिंदी</a>
+							{#if $langAvailability.english}
+								<a class="btn btn-{langpref == 'english' ? 'dark' : 'outline-dark'}" href="?lang=en">English</a>
+							{/if}
+							{#if $langAvailability.hindi}
+								<a class="btn btn-{langpref == 'hindi' ? 'dark' : 'outline-dark'}" href="?lang=hi">हिंदी</a>
+							{/if}
 						</div>
 					</div>
 					<!-- <div class="spinner-grow mx-1" style="width: 1rem; height: 1rem" role="status">
@@ -75,7 +88,7 @@
 		</div>
 
 		<div class="  px-2 pt-1">
-			<div  class=" rounded-2 shadow-sm container bg-danger">
+			<div class=" rounded-2 shadow-sm container bg-danger">
 				<div class="swiper w-auto w-lg-100">
 					<!-- Additional required wrapper -->
 					<div class="swiper-wrapper">

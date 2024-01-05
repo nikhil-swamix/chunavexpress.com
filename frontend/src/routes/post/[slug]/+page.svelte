@@ -3,17 +3,21 @@
 	import SinglePost from '../../../components/SinglePost.svelte';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-
-	// console.log(data);
-
+	import langAvailability from '$lib/stores/langAvailability.js';
 	let langpref, title, description, body;
+
+	$langAvailability.hindi = Boolean(data.docs[0].body_hindi)
+	$langAvailability.english = Boolean(data.docs[0].body_english)
+	console.log($langAvailability);
+
+
 	langpref = $page.url.searchParams.get('lang') == 'en' ? 'english' : 'hindi';
+	body = langpref == 'hindi' ? data.docs[0].body_hindi : data.docs[0].body_english;
 
 	$: {
-		body = langpref == 'hindi' ? data.docs[0].body_hindi : data.docs[0].body_english;
 		title = langpref == 'hindi' ? data.docs[0].title_hindi : data.docs[0].title;
-		description = body.root.children[0].children[0]?.text;
-		console.log(langpref, body.root.children);
+		description = body?.root.children[0].children[0]?.text;
+		// console.log(langpref, $langAvailability);
 	}
 </script>
 
