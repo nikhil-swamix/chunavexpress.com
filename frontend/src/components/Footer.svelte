@@ -12,22 +12,18 @@
 			<a href="https://www.youtube.com/@chunavexpress" target="_blank" class="h4 col">Youtube</a>
 		</div> -->
 	</div>
-	<div class="col-lg mb-4 px-lg-5 ">
-		<h4 class="text-danger display-5">TOP CATEGORIES</h4>
-		<div class="row py-lg-3">
-			<h3 class="col-12 col-lg-12">Latest News</h3>
-			<h3 class="col-12 col-lg-12">Politics</h3>
-			<h3 class="col-12 col-lg-12">Loksabha Elections 2024</h3>
-			<div class="dropdown">
-				<h3 class="dropdown-toggle h3 p-0 m-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">Assembly Elections 2023</h3>
-				<ul class="dropdown-menu position-absolute">
-					<li><a class="dropdown-item" href="#">Madhya Pradesh</a></li>
-					<li><a class="dropdown-item" href="#">Chhattisgarh</a></li>
-					<li><a class="dropdown-item" href="#">Rajasthan</a></li>
-					<li><a class="dropdown-item" href="#">Telangana</a></li>
-					<li><a class="dropdown-item" href="#">Mizoram</a></li>
-				</ul>
-			</div>
+	<div class="col-lg mb-4 px-lg-5">
+		<h4 class="text-danger display-6">READ MORE</h4>
+		<div class="row py-lg-3 text-white g-lg-3 g-0 text-uppercase">
+			<!-- home -->
+			<h3 class="col-lg-3 col-4"><a href="/">Home</a></h3>
+			<h3 class="col-lg-3 col-4"><a href="/categories/politics">Politics</a></h3>
+			<h3 class="col-lg-3 col-4"><a href="/categories/loksabha"> LOKSABHA </a></h3>
+			<h3 class="col-lg-3 col-4"><a href="/categories/madhyapradesh-elections">M.P </a></h3>
+			<h3 class="col-lg-3 col-4"><a href="/categories/chhattisgarh-elections">Chhattisgarh</a></h3>
+			<h3 class="col-lg-3 col-4"><a href="/categories/rajasthan-elections">Rajasthan</a></h3>
+			<h3 class="col-lg-3 col-4"><a href="/categories/telangana-elections">Telangana</a></h3>
+			<h3 class="col-lg-3 col-4"><a href="/categories/mizoram-elections">Mizoram</a></h3>
 		</div>
 	</div>
 	<div class="col-lg mb-4 px-lg-5 d-none">
@@ -38,3 +34,9 @@
 		</div>
 	</div>
 </footer>
+
+<style>
+	a {
+		color: white;
+	}
+</style>

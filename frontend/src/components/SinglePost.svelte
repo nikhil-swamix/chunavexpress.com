@@ -96,4 +96,7 @@
 		transform: scale(1.03);
 		min-height: 10em;
 	}
+	h2{
+		color: #000 !important;
+	}
 </style>
