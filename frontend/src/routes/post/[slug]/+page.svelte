@@ -27,6 +27,7 @@
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
 	<meta property="og:image" content={data.docs[0].meta.image?.url} />
+	<meta property="og:image:alt" content={data.docs[0].meta.image?.alt} />
 	<meta property="og:url" content={$page.url.href} />
 	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
