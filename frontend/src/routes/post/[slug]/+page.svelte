@@ -24,9 +24,12 @@
 <svelte:head>
 	<!-- Replace these values with your specific metadata -->
 	<title>{title}</title>
+	<meta property="og:site_name" content="Chunav Express">
+	<meta property="og:type" content="website" />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
 	<meta property="og:image" content="https://chunavexpress.com{data.docs[0].meta.image?.url}" />
+	<meta property="og:image:secure_url" content="https://chunavexpress.com{data.docs[0].meta.image?.url}" />
 	<meta property="og:image:alt" content={description} />
 	<meta property="og:url" content={$page.url.href} />
 	<meta name="twitter:card" content="summary_large_image" />
