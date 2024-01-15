@@ -5,11 +5,11 @@
 	import { page } from '$app/stores';
 	import langAvailability from '$lib/stores/langAvailability.js';
 	let langpref, title, description, body;
+	console.log(data);
 
-	$langAvailability.hindi = Boolean(data.docs[0].body_hindi)
-	$langAvailability.english = Boolean(data.docs[0].body_english)
+	$langAvailability.hindi = Boolean(data.docs[0].body_hindi);
+	$langAvailability.english = Boolean(data.docs[0].body_english);
 	console.log($langAvailability);
-
 
 	langpref = $page.url.searchParams.get('lang') == 'en' ? 'english' : 'hindi';
 	body = langpref == 'hindi' ? data.docs[0].body_hindi : data.docs[0].body_english;
@@ -26,8 +26,8 @@
 	<title>{title}</title>
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
-	<meta property="og:image" content={data.docs[0].meta.image?.url} />
-	<meta property="og:image:alt" content={data.docs[0].meta.image?.alt} />
+	<meta property="og:image" content="https://chunavexpress.com{data.docs[0].meta.image?.url}" />
+	<meta property="og:image:alt" content={description} />
 	<meta property="og:url" content={$page.url.href} />
 	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
