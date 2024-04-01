@@ -22,23 +22,22 @@
 	}
 
 	let schema = {
-		"@context": "https://schema.org",
-		"@type": "NewsArticle",
-		"headline": title,
-		"image": [
-			imgurl
-
+		'@context': 'https://schema.org',
+		'@type': 'NewsArticle',
+		headline: data.docs[0].title,
+		image: [imgurl],
+		datePublished: data?.docs[0]?.createdAt,
+		dateModified: data?.docs[0]?.updatedAt,
+		author: [
+			{
+				'@type': 'Person',
+				name: 'Editor',
+				url: 'https://chunavexpress.com'
+			}
 		],
-		"datePublished": data?.docs[0]?.createdAt,
-		"dateModified": data?.docs[0]?.updatedAt,
-		"author": [{
-			"@type": "Person",
-			"name": "Editor",
-		}],
 
-		"description": description
-
-	}
+		description: description
+	};
 	let schemaMeGadhaHa = `<script type="application/ld+json">${JSON.stringify(schema)}<\/script>`;
 </script>
 
@@ -57,7 +56,6 @@
 	<meta name="description" content={description} />
 
 	{@html schemaMeGadhaHa}
-	
 </svelte:head>
 
 <div class=" row mx-0 px-lg-3">
