@@ -17,7 +17,7 @@
 
 	$: {
 		title = langpref == 'hindi' ? data.docs[0].title_hindi : data.docs[0].title;
-		description = body?.root.children[0].children[0]?.text;
+		description = data.docs[0].meta.description;
 		// console.log(langpref, $langAvailability);
 	}
 
