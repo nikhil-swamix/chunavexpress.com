@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	export let data;
 	import SinglePost from '../../../components/SinglePost.svelte';
 	import { onMount } from 'svelte';
@@ -13,18 +13,39 @@
 
 	langpref = $page.url.searchParams.get('lang') == 'en' ? 'english' : 'hindi';
 	body = langpref == 'hindi' ? data.docs[0].body_hindi : data.docs[0].body_english;
+	let imgurl = `https://chunavexpress.com${data.docs[0].meta.image?.url}`;
 
 	$: {
 		title = langpref == 'hindi' ? data.docs[0].title_hindi : data.docs[0].title;
 		description = body?.root.children[0].children[0]?.text;
 		// console.log(langpref, $langAvailability);
 	}
+
+	let schema = {
+		"@context": "https://schema.org",
+		"@type": "NewsArticle",
+		"headline": title,
+		"image": [
+			imgurl
+
+		],
+		"datePublished": data?.docs[0]?.createdAt,
+		"dateModified": data?.docs[0]?.updatedAt,
+		"author": [{
+			"@type": "Person",
+			"name": "Editor",
+		}],
+
+		"description": description
+
+	}
+	let schemaMeGadhaHa = `<script type="application/ld+json">${JSON.stringify(schema)}<\/script>`;
 </script>
 
 <svelte:head>
 	<!-- Replace these values with your specific metadata -->
 	<title>{title}</title>
-	<meta property="og:site_name" content="Chunav Express">
+	<meta property="og:site_name" content="Chunav Express" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
@@ -33,6 +54,10 @@
 	<meta property="og:image:alt" content={description} />
 	<meta property="og:url" content={$page.url.href} />
 	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="description" content={description} />
+
+	{@html schemaMeGadhaHa}
+	
 </svelte:head>
 
 <div class=" row mx-0 px-lg-3">
