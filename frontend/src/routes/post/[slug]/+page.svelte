@@ -5,7 +5,7 @@
 	import { page } from '$app/stores';
 	import langAvailability from '$lib/stores/langAvailability.js';
 	let langpref, title, description, body;
-	console.log(data);
+	console.log(data.docs[0].body_english);
 
 	$langAvailability.hindi = Boolean(data.docs[0].body_hindi);
 	$langAvailability.english = Boolean(data.docs[0].body_english);

@@ -23,28 +23,42 @@
 	}
 
 	body?.root?.children?.map((item) => {
-		let sub_children = item.children.map((leaf) => {
-			let render = '';
-			let isBold = leaf.format == 1 ? 'fw-bold lead' : '';
-			let spacer = 'mb-4 easy-reader';
-			let text = boldnum(leaf.text);
-			if (leaf.type == 'linebreak') {
-				return;
-			}
+		if (item?.type == 'paragraph') {
+			
+			let sub_children = item.children?.map((leaf) => {
+				let render = '';
+				let isBold = leaf.format == 1 ? 'fw-bold lead' : '';
+				let spacer = 'mb-4 easy-reader';
+				let text = boldnum(leaf.text);
+				if (leaf.type == 'linebreak') {
+					return;
+				}
+	
+				if (item.type === 'paragraph') {
+					render = `<p class="${isBold} ${spacer}">${text}</p>`;
+				} else if (item.type === 'image') {
+					render = `<img src=${item.url} alt=${item.alt} />`;
+				} else if (item.type === 'heading') {
+					let text = spanrenderer(item.children[0].text, 'btn btn-dark px-2 py-0');
+					render = `<${item.tag} class="${spacer} ">${text}</${item.tag}>`;
+				} else if (item.type === 'list') {
+					render = `<${item.tag} class="${spacer}">${item.children[0].text}</${item.tag} style="margin-left: 20px;">`;
+				}
+	
+				renders.push(render);
+			});
+		
+		} else if(item?.type == 'upload') { 
+			renders.push(`
+			<div class="col-12  px-lg-3 d-flex justify-content-center">
+			<img src="https://chunavexpress.com${item?.value.url}" alt=${item?.value?.alt} />
+			</div>
+			`);
 
-			if (item.type === 'paragraph') {
-				render = `<p class="${isBold} ${spacer}">${text}</p>`;
-			} else if (item.type === 'image') {
-				render = `<img src=${item.url} alt=${item.alt} />`;
-			} else if (item.type === 'heading') {
-				let text = spanrenderer(item.children[0].text, 'btn btn-dark px-2 py-0');
-				render = `<${item.tag} class="${spacer} ">${text}</${item.tag}>`;
-			} else if (item.type === 'list') {
-				render = `<${item.tag} class="${spacer}">${item.children[0].text}</${item.tag}>`;
-			}
+			
+		}
 
-			renders.push(render);
-		});
+		return renders;
 	});
 	function copy2clipboard () {
 		navigator.clipboard.writeText(`https://chunavexpress.com/post/${doc.slug}`);
@@ -95,6 +109,7 @@
 	.card img {
 		transform: scale(1.03);
 		min-height: 10em;
+		
 	}
 	h2{
 		color: #000 !important;
