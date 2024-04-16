@@ -12,13 +12,13 @@ export async function getVideos() {
 	const res = await fetch(url);
 	const data = await res.json();
 	// add intentional 3000ms delay
-	await new Promise((r) => setTimeout(r, 5000));
+	await new Promise((r) => setTimeout(r, 1000));
 
 	return data.docs;
 }
 
 export async function latestPosts() {
-	// http://localhost:3000/api/posts
+
 	let data = await (await fetch(baseURL + '/posts?limit=14')).json();
 	console.log("ashiled debugger")
 

@@ -47,7 +47,7 @@
 		});
 	});
 	$: {
-		console.log($langAvailability);
+
 		langpref = $page.url.searchParams.get('lang') == 'en' ? 'english' : 'hindi';
 	}
 	getLangPref();

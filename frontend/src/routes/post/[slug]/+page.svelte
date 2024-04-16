@@ -9,17 +9,25 @@
 
 	$langAvailability.hindi = Boolean(data.docs[0].body_hindi);
 	$langAvailability.english = Boolean(data.docs[0].body_english);
-	console.log($langAvailability);
 
 	langpref = $page.url.searchParams.get('lang') == 'en' ? 'english' : 'hindi';
 	body = langpref == 'hindi' ? data.docs[0].body_hindi : data.docs[0].body_english;
+	console.log(data);
 	let imgurl = `https://chunavexpress.com${data.docs[0].meta.image?.url}`;
 
 	$: {
 		title = langpref == 'hindi' ? data.docs[0].title_hindi : data.docs[0].title;
 		description = data.docs[0].meta.description;
-		// console.log(langpref, $langAvailability);
+		console.log(langpref, $langAvailability);
 	}
+
+	onMount(() => {
+		if (langpref == 'hindi' && !$langAvailability.hindi) {
+			langpref = 'english';
+		} else if (langpref == 'english' && !$langAvailability.english) {
+			langpref = 'hindi';
+		}
+	});
 
 	let schema = {
 		'@context': 'https://schema.org',
@@ -60,22 +68,20 @@
 
 <div class=" row mx-0 px-lg-3">
 	<div class="col-12 pt-3 px-lg-5">
-		{#if body?.root?.children[0].children.length < 1}
+		{#if body?.root?.children[0].children.length <= 1}
 			<h2 class="py-5 text-center my-5">
 				<!-- fa cross mark -->
 				<i class="fa-solid fa-circle-exclamation text-danger" />
 				Sorry This post is not available in {langpref}
 			</h2>
 		{:else}
-			<div class="col-12 col-lg-8 px-lg-3 mx-auto">
-				{#key langpref}
-					{#each data.docs as doc}
-						<SinglePost {doc} {langpref} />
-					{/each}
-				{/key}
-			</div>
-			<!-- else content here -->
+			<div class="col-12 col-lg-8 px-lg-3 mx-auto"></div>
 		{/if}
+		{#key langpref}
+			{#each data.docs as doc}
+				<SinglePost {doc} {langpref} />
+			{/each}
+		{/key}
 		<!-- <h3 class="pb-1"><i class="fa-solid fa-fire text-danger" /> Trending Posts</h3> -->
 	</div>
 </div>

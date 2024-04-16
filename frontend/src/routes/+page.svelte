@@ -45,7 +45,7 @@
 			<h2 class="text-center bg-danger rounded text-white">LATEST POSTS</h2>
 			<div class="col-lg px-1 mx-auto">
 				{#each data?.docs as doc}
-					<SinglePost {doc} {langpref} />
+					<SinglePost {doc} bind:langpref />
 				{/each}
 			</div>
 			<div class="col-lg-4 ps-lg-4 pe-lg-0 px-0">
@@ -71,7 +71,7 @@
 								type="text/html"
 								width="100%"
 								height="240"
-								src={`https://www.youtube.com/embed/${video.videoId}?autoplay=1&controls=0`}
+								src={`https://www.youtube.com/embed/${video.videoId}?autoplay=0&controls=0`}
 								frameborder="0"
 							/>
 						</div>
