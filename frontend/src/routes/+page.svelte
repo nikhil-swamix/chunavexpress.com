@@ -5,41 +5,56 @@
 	import { onMount } from 'svelte';
 	import * as helpers from '$lib/helpers.js';
 	import { page } from '$app/stores';
+	import Swiper from 'swiper';
 
 	let langpref;
 	let showdocs;
 
-	// doc['body_' + langpref]?.root?.children?.length
-	// filter if lang not available
-
 	$: {
 		langpref = $page.url.searchParams.get('lang') == 'en' ? 'english' : 'hindi';
 		showdocs = data.docs.filter((doc) => doc['body_' + langpref]?.root?.children[0].children.length >= 1).slice(0, 12);
-		console.log(showdocs.length, langpref);
+		console.log(showdocs);
 	}
-	// slice 12 posts
+	onMount(() => {
+		var swiper = new Swiper('.swiper', {
+			slidesPerView: 'auto',
+			freeMode: true,
+			loop: true,
+			autoplay: {
+				delay: 3000,
+				disableOnInteraction: false,
+				stopOnLastSlide: false
+			}
+		});
+	});
 </script>
 
 <section class="  container mx-auto">
 	<div class="d-flex align-self-lg-start align-items-center justify-content-center py-2 px-lg-0 text-center"></div>
 	{#key langpref}
 		<div class="row g-0">
-			{#each showdocs as doc}
-				{#if doc['body_' + langpref]?.root?.children?.length >= 0}
-					<div class=" col-lg-3 px-lg-3 my-2 border-0 d-block">
-						<a class="card-text text-sm" href="/post/{doc.slug}">
-							<div class="col-auto p-0" style="width: 100%; height:12em">
-								<div class=" h-100 rounded" style="background-image: url('{doc.banner.url}');background-size: cover; background-position: center;" />
+			<div class="swiper">
+				<div class="swiper-wrapper">
+					{#each showdocs as doc}
+						{#if doc['body_' + langpref]?.root?.children?.length >= 0}
+							<div class="swiper-slide col-lg-3 px-lg-3 my-2 border-0 d-block">
+								<a class="card-text text-sm" href="/post/{doc.slug}">
+									<div class="col-auto p-0" style="width: 100%; height:12em">
+										<img class="h-100 w-100 rounded object-cover" src={doc.banner.url} alt="" />
+									</div>
+									<div class="p-2">
+										{#if langpref == 'hindi'}
+											{doc.title_hindi}
+										{:else}
+											{doc.title}
+										{/if}
+									</div>
+								</a>
 							</div>
-							{#if langpref == 'hindi'}
-								{doc.title_hindi}
-							{:else}
-								{doc.title}
-							{/if}
-						</a>
-					</div>
-				{/if}
-			{/each}
+						{/if}
+					{/each}
+				</div>
+			</div>
 		</div>
 		<div class="row mx-0 px-0 my-lg-3 px-lg-2 pe-xxl-3">
 			<h2 class="text-center bg-danger rounded text-white">LATEST POSTS</h2>

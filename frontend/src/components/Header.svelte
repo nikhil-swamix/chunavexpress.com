@@ -88,7 +88,7 @@
 		</div>
 
 		<div class="  px-2 pt-1">
-			<div class=" rounded-2 shadow-sm container bg-danger">
+			<div class=" rounded-2 shadow-sm col-lg-10 mx-auto px-1 bg-danger">
 				<div class="swiper w-auto w-lg-100">
 					<!-- Additional required wrapper -->
 					<div class="swiper-wrapper">
@@ -96,7 +96,7 @@
 						{#each menuCategories as category}
 							<div class="swiper-slide">
 								<li class="menu-item">
-									<a href={category.link} target="blank" class="text-white">
+									<a href={category.link} class="text-white">
 										<i class={category.icon} />
 										{category.name}
 									</a>
@@ -108,11 +108,11 @@
 								<div class="dropdown">
 									<button class="btn dropdown-toggle p-0 m-0 text-white" type="button" data-bs-toggle="dropdown">Assembly Elections 2023</button>
 									<ul class="dropdown-menu position-absolute">
-										<li><a class="dropdown-item" target="blank" href="/categories/madhyapradesh-elections">Madhya Pradesh</a></li>
-										<li><a class="dropdown-item" target="blank" href="/categories/chhattisgarh-elections">Chhattisgarh</a></li>
-										<li><a class="dropdown-item" target="blank" href="/categories/rajasthan-elections">Rajasthan</a></li>
-										<li><a class="dropdown-item" target="blank" href="/categories/telangana-elections">Telangana</a></li>
-										<li><a class="dropdown-item" target="blank" href="/categories/mizoram-elections">Mizoram</a></li>
+										<li><a class="dropdown-item"  href="/categories/madhyapradesh-elections">Madhya Pradesh</a></li>
+										<li><a class="dropdown-item"  href="/categories/chhattisgarh-elections">Chhattisgarh</a></li>
+										<li><a class="dropdown-item"  href="/categories/rajasthan-elections">Rajasthan</a></li>
+										<li><a class="dropdown-item"  href="/categories/telangana-elections">Telangana</a></li>
+										<li><a class="dropdown-item"  href="/categories/mizoram-elections">Mizoram</a></li>
 									</ul>
 								</div>
 							</li>
