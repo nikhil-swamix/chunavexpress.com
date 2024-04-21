@@ -19,7 +19,7 @@ export async function getVideos() {
 
 export async function latestPosts() {
 
-	let data = await (await fetch(baseURL + '/posts?limit=14')).json();
+	let data = await (await fetch(baseURL + '/posts?limit=20')).json();
 	console.log("ashiled debugger")
 
 	data.docs.map((post) => {

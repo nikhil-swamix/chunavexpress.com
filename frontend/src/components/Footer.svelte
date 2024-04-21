@@ -13,17 +13,17 @@
 		</div> -->
 	</div>
 	<div class="col-lg mb-4 px-lg-5">
-		<h4 class="text-danger display-6">READ MORE</h4>
-		<div class="row py-lg-3 text-white g-lg-3 g-0 text-uppercase">
+		<h5 class="text-danger ">READ MORE</h5>
+		<div class="row py-lg-3 text-white g-lg-3 g-0 ">
 			<!-- home -->
-			<h3 class="col-lg-3 col-4"><a href="/">Home</a></h3>
-			<h3 class="col-lg-3 col-4"><a href="/categories/politics">Politics</a></h3>
-			<h3 class="col-lg-3 col-4"><a href="/categories/loksabha"> LOKSABHA </a></h3>
-			<h3 class="col-lg-3 col-4"><a href="/categories/madhyapradesh-elections">M.P </a></h3>
-			<h3 class="col-lg-3 col-4"><a href="/categories/chhattisgarh-elections">Chhattisgarh</a></h3>
-			<h3 class="col-lg-3 col-4"><a href="/categories/rajasthan-elections">Rajasthan</a></h3>
-			<h3 class="col-lg-3 col-4"><a href="/categories/telangana-elections">Telangana</a></h3>
-			<h3 class="col-lg-3 col-4"><a href="/categories/mizoram-elections">Mizoram</a></h3>
+			<h4 class="col-lg-3 col-4"><a href="/">Home</a></h4>
+			<h4 class="col-lg-3 col-4"><a href="/categories/politics">Politics</a></h4>
+			<h4 class="col-lg-3 col-4"><a href="/categories/loksabha"> Loksabha </a></h4>
+			<h4 class="col-lg-3 col-4"><a href="/categories/madhyapradesh-elections">M.P </a></h4>
+			<h4 class="col-lg-3 col-4"><a href="/categories/chhattisgarh-elections">Chhattisgarh</a></h4>
+			<h4 class="col-lg-3 col-4"><a href="/categories/rajasthan-elections">Rajasthan</a></h4>
+			<h4 class="col-lg-3 col-4"><a href="/categories/telangana-elections">Telangana</a></h4>
+			<h4 class="col-lg-3 col-4"><a href="/categories/mizoram-elections">Mizoram</a></h4>
 		</div>
 	</div>
 	<div class="col-lg mb-4 px-lg-5 d-none">

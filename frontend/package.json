@@ -2,13 +2,12 @@
 	"name": "frontend",
 	"version": "1.0.0",
 	"scripts": {
-		"rdeploy": "pnpm sync-env && ssh bbp \" source ~/.nvm/nvm.sh && cd chunavexpress.com/frontend/ && git pull && pnpm i && pnpm build && pnpm start \"",
+		"rdeploy": "pnpm sync-env && ssh bbp \"  bash chunavexpress.com/scripts/deploy.fe.sh   \"",
 		"sync-env": "scp .env bbp:chunavexpress.com/frontend/.env ",
 		"build": "vite build",
 		"dev": "vite",
-		"prod": "vite preview",
-		"start": "pm2 start ecosystem.config.cjs",
-		"quick-deploy": "pnpm build; scp -r build/ bbp:chunavexpress.com/frontend/build/ && scp -r ./package.json bbp:chunavexpress.com/frontend/; ssh bbp ",
+		"preview": "vite preview",
+		"quick-deploy": "pnpm build && scp -r build/ bbp:chunavexpress.com/frontend/build/ && ssh bbp \" source ~/.nvm/nvm.sh && pm2 restart all\" ",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch"
 	},
 	"devDependencies": {
@@ -38,6 +37,6 @@
 		"dotenv": "^16.3.1",
 		"md5": "^2.3.0",
 		"sveltestrap": "^5.11.2",
-		"swiper": "^11.0.5"
+		"swiper": "^11.1.1"
 	}
 }

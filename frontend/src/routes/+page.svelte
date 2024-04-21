@@ -13,7 +13,10 @@
 	$: {
 		langpref = $page.url.searchParams.get('lang') == 'en' ? 'english' : 'hindi';
 		showdocs = data.docs.filter((doc) => doc['body_' + langpref]?.root?.children[0].children.length >= 1).slice(0, 12);
-		console.log(showdocs);
+		data.docs = removeLangEmptyPosts();
+	}
+	function removeLangEmptyPosts() {
+		return data.docs.filter((doc) => doc['body_' + langpref]?.root?.children[0].children.length >= 1);
 	}
 	onMount(() => {
 		var swiper = new Swiper('.swiper', {
@@ -24,10 +27,17 @@
 				delay: 3000,
 				disableOnInteraction: false,
 				stopOnLastSlide: false
+			},
+
+			pagination: {
+				el: '.swiper-pagination',
+				dynamicBullets: true
 			}
 		});
 	});
 </script>
+
+<svelte:head></svelte:head>
 
 <section class="  container mx-auto">
 	<div class="d-flex align-self-lg-start align-items-center justify-content-center py-2 px-lg-0 text-center"></div>
@@ -54,6 +64,7 @@
 						{/if}
 					{/each}
 				</div>
+				<div class="swiper-pagination" />
 			</div>
 		</div>
 		<div class="row mx-0 px-0 my-lg-3 px-lg-2 pe-xxl-3">
