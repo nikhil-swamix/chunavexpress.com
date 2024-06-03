@@ -19,7 +19,22 @@
 		return data.docs.filter((doc) => doc['body_' + langpref]?.root?.children[0].children.length >= 1);
 	}
 	onMount(() => {
-		var swiper = new Swiper('.swiper', {
+		var swiper = new Swiper('.swipergallery', {
+			slidesPerView: 4,
+			freeMode: true,
+			loop: true,
+			autoplay: {
+				delay: 3000,
+				disableOnInteraction: false,
+				stopOnLastSlide: false
+			},
+
+			pagination: {
+				el: '.swiper-pagination',
+				dynamicBullets: true
+			}
+		});
+		new Swiper('.swiper', {
 			slidesPerView: 'auto',
 			freeMode: true,
 			loop: true,
@@ -43,7 +58,7 @@
 	<div class="d-flex align-self-lg-start align-items-center justify-content-center py-2 px-lg-0 text-center"></div>
 	{#key langpref}
 		<div class="row g-0">
-			<div class="swiper">
+			<div class="swiper swipergallery">
 				<div class="swiper-wrapper">
 					{#each showdocs as doc}
 						{#if doc['body_' + langpref]?.root?.children?.length >= 0}
