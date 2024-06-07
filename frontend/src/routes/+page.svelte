@@ -20,7 +20,7 @@
 	}
 	onMount(() => {
 		var swiper = new Swiper('.swipergallery', {
-			slidesPerView: 4,
+			slidesPerView: 1, // Default for mobile
 			freeMode: true,
 			loop: true,
 			autoplay: {
@@ -32,6 +32,13 @@
 			pagination: {
 				el: '.swiper-pagination',
 				dynamicBullets: true
+			},
+
+			breakpoints: {
+				// When window width is >= 768px
+				768: {
+					slidesPerView: 4
+				}
 			}
 		});
 		new Swiper('.swiper', {
@@ -52,7 +59,9 @@
 	});
 </script>
 
-<svelte:head></svelte:head>
+<svelte:head>
+	
+</svelte:head>
 
 <section class="  container mx-auto">
 	<div class="d-flex align-self-lg-start align-items-center justify-content-center py-2 px-lg-0 text-center"></div>
