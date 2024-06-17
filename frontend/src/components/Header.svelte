@@ -37,8 +37,9 @@
 	onMount(() => {
 		var swiper = new Swiper('.swiper', {
 			slidesPerView: 'auto',
+
 			freeMode: true,
-			loop: true,
+			loop: false,
 			autoplay: {
 				delay: 3000,
 				disableOnInteraction: false,
@@ -47,7 +48,6 @@
 		});
 	});
 	$: {
-
 		langpref = $page.url.searchParams.get('lang') == 'en' ? 'english' : 'hindi';
 	}
 	getLangPref();
@@ -72,58 +72,50 @@
 							{/if}
 						</div>
 					</div>
-					<!-- <div class="spinner-grow mx-1" style="width: 1rem; height: 1rem" role="status">
-						<span class="visually-hidden">Loading...</span>
-					</div>
-					com -->
 				</h1>
 				<div class="col-md-auto d-flex mx mx-md-auto mb-md-0 align-items-center">
-					<a href="https://www.facebook.com/ChunavExpress1?mibextid=ZbWKwL" target="_blank"><span class="mvp-nav-soc-but fab fa-facebook-f" /></a>
-					<a href="https://twitter.com/Chunav_express" target="_blank"><span class="mvp-nav-soc-but fab fa-twitter" /></a>
-					<a href="https://www.instagram.com/chunavexpress/?igshid=ZDdkNTZiNTM%3D" target="_blank"><span class="mvp-nav-soc-but fab fa-instagram" /></a>
+					<a href="https://www.facebook.com/ChunavExpress1?mibextid=ZbWKwL" target="_blank"><span class="text-black mx-2 fab fa-facebook-f" /></a>
+					<a href="https://twitter.com/Chunav_express" target="_blank"><span class="text-black mx-2 fab fa-twitter" /></a>
+					<a href="https://www.instagram.com/chunavexpress/?igshid=ZDdkNTZiNTM%3D" target="_blank"><span class="text-black mx-2 fab fa-instagram" /></a>
 					<!-- <a href="https://www.youtube.com/@chunavexpress" target="_blank"><span class="mvp-nav-soc-but fab fa-youtube" /></a> -->
 					<!-- <span class="text-dark ms-2 badge bg-dark text-danger"> Follow</span> -->
 				</div>
 			</div>
 		</div>
 
-		<div class="  px-2 pt-1">
-			<div class=" rounded-2 shadow-sm col-lg-10 mx-auto px-1 bg-danger">
-				<div class="swiper w-auto w-lg-100">
-					<!-- Additional required wrapper -->
-					<div class="swiper-wrapper">
-						<!-- Slides -->
-						{#each menuCategories as category}
+		<div class="  px-lg-5  ">
+			<div class=" rounded-2 shadow-sm   px-1 px-lg-0  bg-danger">
+				<div class="row rounded-2 shadow-sm bg-danger">
+					<div class="swiper col-lg-6 ">
+						<div class="swiper-wrapper mx">
+							<div class="swiper-slide">
+								<li class="menu-item"><a href="/" class="text-white">Home</a></li>
+							</div>
+							<div class="swiper-slide">
+								<li class="menu-item"><a href="/latest" class="text-white">Latest</a></li>
+							</div>
+							<div class="swiper-slide">
+								<li class="menu-item"><a href="/categories/politics" class="text-white">Politics</a></li>
+							</div>
+							<div class="swiper-slide">
+								<li class="menu-item"><a href="/categories/by-elections" class="text-white">By-Elections</a></li>
+							</div>
+							<div class="swiper-slide">
+								<li class="menu-item"><a href="/categories/lok-sabha-elections-2024" class="text-white">Lok Sabha Elections 2024</a></li>
+							</div>
+							<div class="swiper-slide">
+								<li class="menu-item"><a href="/categories/assembly-elections-2024" class="text-white">Assembly Elections 2024</a></li>
+							</div>
+							<div class="swiper-slide">
+								<li class="menu-item"><a href="/categories/election-results" class="text-white">Election Results</a></li>
+							</div>
 							<div class="swiper-slide">
 								<li class="menu-item">
-									<a href={category.link} class="text-white">
-										<i class={category.icon} />
-										{category.name}
+									<a href="https://www.youtube.com/@chunavexpress" target="blank" class="text-white">
+										<i class="fab fa-youtube"></i> Youtube
 									</a>
 								</li>
 							</div>
-						{/each}
-						<div class="swiper-slide">
-							<li class="menu-item">
-								<div class="dropdown">
-									<button class="btn dropdown-toggle p-0 m-0 text-white" type="button" data-bs-toggle="dropdown">Assembly Elections 2023</button>
-									<ul class="dropdown-menu position-absolute">
-										<li><a class="dropdown-item"  href="/categories/madhyapradesh-elections">Madhya Pradesh</a></li>
-										<li><a class="dropdown-item"  href="/categories/chhattisgarh-elections">Chhattisgarh</a></li>
-										<li><a class="dropdown-item"  href="/categories/rajasthan-elections">Rajasthan</a></li>
-										<li><a class="dropdown-item"  href="/categories/telangana-elections">Telangana</a></li>
-										<li><a class="dropdown-item"  href="/categories/mizoram-elections">Mizoram</a></li>
-									</ul>
-								</div>
-							</li>
-						</div>
-						<div class="swiper-slide">
-							<li class="menu-item">
-								<a href="https://www.youtube.com/@chunavexpress" target="blank" class="text-white">
-									<i class="fab fa-youtube" />
-									Youtube
-								</a>
-							</li>
 						</div>
 					</div>
 				</div>
@@ -224,7 +216,7 @@
 		a,
 		button {
 			font-family: 'Oswald';
-			font-weight: 600 !important;
+			font-weight: 400 !important;
 			font-size: 1em !important;
 			text-transform: uppercase;
 			// margin-right: 1em;

@@ -18,10 +18,7 @@ export async function getVideos() {
 }
 
 export async function latestPosts() {
-
-	let data = await (await fetch(baseURL + '/posts?limit=20')).json();
-	console.log("ashiled debugger")
-
+	let data = await (await fetch(baseURL + '/posts?limit=25')).json();
 	data.docs.map((post) => {
 		if (post.banner) post.banner.url = mediaURL + post.banner.url;
 		else post.banner = { url: '/elections/2.jpg' };

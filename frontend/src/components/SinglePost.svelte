@@ -13,7 +13,7 @@
 	let boldnum = (s) => s?.replace(/\d+/g, `<span class="fw-bold">$&</span>`);
 	let lgSpacer = 'px-xxl-3 px-3';
 	let renders = [];
-	console.log(doc);
+	// console.log(doc);
 
 	if (langpref == 'hindi') {
 		title = doc.title_hindi || doc.meta.title;
