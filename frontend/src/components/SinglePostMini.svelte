@@ -31,7 +31,7 @@
 	}
 </script>
 
-<div class="card border-0 mb-3 shadow-sm d-flex flex-row overflow-hidden">
+<div class="card border-0 mb-3 border-bottom pb-2 d-flex flex-row ">
 	<div class="card-body d-flex flex-column p-2">
 		<div class="card-subtitle text-danger text-capitalize fw-semibold">{doc.category?.[0].title}</div>
 		<a href="https://chunavexpress.com/post/{doc.slug}" target="_blank" class="text-black"><h2 class="card-title">{@html title}</h2></a>

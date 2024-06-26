@@ -52,6 +52,7 @@
 	function removeLangEmptyPosts() {
 		return data_copy.docs.filter((doc) => doc['body_' + langpref]?.root?.children[0].children.length >= 1);
 	}
+
 	onMount(async () => {
 		await getAssemblyElectionsPosts();
 		// assembly-elections-swiper
@@ -82,17 +83,23 @@
 		});
 		new Swiper('.swiper-ticker', {
 			// Optional parameters
-			slidesPerView: 'auto',
+			slidesPerView: 2,
 			spaceBetween: 0,
 			// centeredSlides: true,
-			speed: 5000,
+			speed: 10000,
 			autoplay: {
 				delay: 0
 			},
 			loop: true,
 
 			allowTouchMove: false,
-			disableOnInteraction: true
+			disableOnInteraction: true,
+			breakpoints: {
+				// When window width is >= 768px
+				768: {
+					slidesPerView: 5
+				}
+			}
 		});
 		videos = await helpers.getVideos();
 		new Swiper('.swipergallery', {
@@ -126,11 +133,11 @@
 	<div class="marquee flex-row pe-3 my-3">
 		<span class="live-news d-flex align-items-center">
 			<div class="text-danger ms-1 d-block d-lg-block col-lg-auto col-3 pe-2 text-nano"><span class="spinner-grow spinner-grow-sm text-danger mx-2" role="status"></span>Live News</div>
-			<div class="swiper-ticker overflow-hidden rounded-5">
+			<div class="swiper-ticker overflow-hidden">
 				<div class="swiper-wrapper">
 					{#each data_copy.docs as doc}
 						<div class="swiper-slide w-auto">
-							<div class="badge rounded-pill text-bg-light text-muted mx-1">
+							<div class=" border-end mx-1 pe-2">
 								<a class="link-dark text-sm" href="/post/{doc.slug}">
 									{#if langpref == 'hindi'}
 										{doc.title_hindi}
@@ -150,7 +157,7 @@
 	{#key langpref}
 		<div class="row mx-0 px-0 my-lg-3 px-lg-2 pe-xxl-3">
 			<!-- editor posts -->
-			<div class="col-lg-3 ps-lg-0 px-0 pe-lg-3">
+			<div class="col-lg-3 ps-lg-0 px-2 pe-lg-3">
 				<div class="px-2 px-lg-3 bg-warning-subtle pb-4 rounded-3">
 					<h1 class="pt-2">Editor Picks</h1>
 					{#each editorPicks as doc}
@@ -158,14 +165,15 @@
 					{/each}
 				</div>
 			</div>
-			<div class="col-lg px-2 mx-auto py-5 py-lg-0">
+			<div class="col-lg px-2 mx-auto py-3 py-lg-0">
 				<HeroPost doc={heroPost} {langpref} />
+				<hr>
 				{#each data_copy?.docs.slice(1, 4) as doc}
 					<SinglePostMini {doc} bind:langpref />
 				{/each}
 			</div>
-			<div class="col-lg-3 ps-lg-4 pe-lg-0 px-3">
-				<h4><i class="fa fa-newspaper text-danger fa-xs" aria-hidden="true" /> Just In</h4>
+			<div class="col-lg-3 px-lg-3  p-3 bg-warning-subtle ms-lg-3 rounded-3">
+				<h4><i class="fa fa-newspaper text-danger fa-xs" aria-hidden="true" /> Latest News</h4>
 				{#each data_copy?.docs.slice(4, 14) as doc}
 					<PostHeadline {doc} bind:langpref />
 				{/each}
@@ -175,7 +183,7 @@
 </section>
 <section>
 	<div class="px-3 px-lg-3 pb-4 rounded-3">
-		<h1 class="pt-5 text-danger  px-lg-0">Assembly Elections 2024</h1>
+		<h1 class="pt-5 text-danger px-lg-0">Assembly Elections 2024</h1>
 		<div class="assembly-elections-swiper">
 			<div class="swiper-wrapper">
 				{#each AssemblyElectionPosts as doc}
@@ -185,13 +193,11 @@
 					<div class="swiper-slide">
 						<PostSectionCard {doc} bind:langpref />
 					</div>
-					<div class="swiper-slide">
-						<PostSectionCard {doc} bind:langpref />
-					</div>
+
 				{/each}
 			</div>
 			<div class="text-center">
-				<div class="swiper-paginationse "></div>
+				<div class="swiper-paginationse"></div>
 			</div>
 		</div>
 	</div>
@@ -200,7 +206,7 @@
 <section>
 	<div class="col-12 bg-dark py-lg-3 pb-5 my-lg-5">
 		<h2 class="p-3 rounded-2 me-auto text-danger pb-lg-5">
-			<img src="/logo-min.webp" alt="Chunavexpress" class="m-0 rounded-2 img-fluid me-lg-3 s-c1MG4BWNDc59" height="32" width="64" />Chunavexpress Channel
+			<img src="/logo-min.webp" alt="Chunavexpress" class="m-0 rounded-2 img-fluid me-lg-3 s-c1MG4BWNDc59" height="32" width="64" />Chunavexpress Videos
 		</h2>
 		<div class="swipergallery mb-5">
 			<div class="swiper-wrapper">

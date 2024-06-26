@@ -1,4 +1,4 @@
-<footer class="row bg-black text-white h-100 p-lg-5 p-3 text-justify">
+<footer class="row bg-warning-subtle text-black h-100 p-lg-5 p-3 text-justify">
 	<div class="col-lg mb-4 px-lg-5 d-none">
 		<h3 class="text-danger display-5">ABOUT & CONTACT</h3>
 		<div class="col-lg-12">
@@ -17,16 +17,16 @@
 			<img src="/logo-min.webp" alt="Chunavexpress" class="m-0 rounded-2 img-fluid me-lg-3 s-c1MG4BWNDc59" height="32" width="64" />Chunavexpress Channel
 		</h2>
 
-		<div class="row py-lg-3 text-white g-lg-3 g-0">
-			<h4 class="col-lg-3 col-auto px-2"><a href="/" class="text-white">Home</a></h4>
-			<h4 class="col-lg-3 col-auto px-2"><a href="/latest" class="text-white">Latest</a></h4>
-			<h4 class="col-lg-3 col-auto px-2"><a href="/categories/politics" class="text-white">Politics</a></h4>
-			<h4 class="col-lg-3 col-auto px-2"><a href="/categories/by-elections" class="text-white">By-Elections</a></h4>
-			<h4 class="col-lg-3 col-auto px-2"><a href="/categories/lok-sabha-elections-2024" class="text-white">Lok Sabha Elections 2024</a></h4>
-			<h4 class="col-lg-3 col-auto px-2"><a href="/categories/assembly-elections-2024" class="text-white">Assembly Elections 2024</a></h4>
-			<h4 class="col-lg-3 col-auto px-2"><a href="/categories/election-results" class="text-white">Election Results</a></h4>
+		<div class="row py-lg-3  g-lg-3 g-0">
+			<h4 class="col-lg-3 col-auto px-2"><a href="/" class="">Home</a></h4>
+			<h4 class="col-lg-3 col-auto px-2"><a href="/latest" class="">Latest</a></h4>
+			<h4 class="col-lg-3 col-auto px-2"><a href="/categories/politics" class="">Politics</a></h4>
+			<h4 class="col-lg-3 col-auto px-2"><a href="/categories/by-elections" class="">By-Elections</a></h4>
+			<h4 class="col-lg-3 col-auto px-2"><a href="/categories/lok-sabha-elections-2024" class="">Lok Sabha Elections 2024</a></h4>
+			<h4 class="col-lg-3 col-auto px-2"><a href="/categories/assembly-elections-2024" class="">Assembly Elections 2024</a></h4>
+			<h4 class="col-lg-3 col-auto px-2"><a href="/categories/election-results" class="">Election Results</a></h4>
 			<h4 class="col-lg-3 col-auto px-2">
-				<a href="https://www.youtube.com/@chunavexpress" target="blank" class="text-white">
+				<a href="https://www.youtube.com/@chunavexpress" target="blank" class="">
 					<i class="fab fa-youtube"></i> Youtube
 				</a>
 			</h4>
@@ -41,7 +41,7 @@
 
 <style>
 	a {
-		color: white;
+		color: black;
 	}
 	@media (max-width: 768px) {
 		h4 {

@@ -103,7 +103,9 @@
 			</p>
 		</div>
 		<!-- <hr /> -->
-		<img src={doc?.banner?.url} class="card-img-top rounded shadow" alt="this is the prime  of post" height="400" width="auto" />
+		<div class="px-2 px-lg-3">
+			<img src={doc?.banner?.url} class="w-100 shadow" alt="this is the prime  of post" height="400" width="auto" />
+		</div>
 		<div class="card-body px-0 text-justify {lgSpacer}">
 			{#each renders as item}
 				{@html item}
@@ -118,7 +120,7 @@
 		line-height: 1.75em;
 	}
 	.card img {
-		transform: scale(1.03);
+		/* transform: scale(1.03); */
 		min-height: 10em;
 	}
 	h2 {

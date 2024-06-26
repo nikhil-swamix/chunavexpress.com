@@ -26,7 +26,7 @@
     readingTime = Math.round(fulltext.split(' ').length / 200);
 </script>
 
-<div class="card border-1 mb-3 shadow-sm d-flex flex-column overflow-hidden">
+<div class=" mb-3  d-flex flex-column overflow-hidden">
 	<div class="image-container">
 		<img src={doc?.banner?.url} class="card-img-top" alt="Post Thumbnail" />
 		<span class="reading-time">{readingTime} min read</span>

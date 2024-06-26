@@ -67,7 +67,7 @@
 </svelte:head>
 
 <div class=" row mx-0 px-lg-3">
-	<div class="col-12 col-lg-9 mx-lg-auto pt-3 px-lg-5">
+	<div class="col-12 col-lg-6 mx-lg-auto pt-3 px-lg-5">
 
 		{#key langpref}
 			{#each data.docs as doc}

@@ -26,13 +26,13 @@
 	readingTime = Math.round(fulltext.split(' ').length / 200);
 </script>
 
-<div class="mx-auto mb-3">
-	<div class="card-body">
+<div class="mx-auto mb-3 bg-warning-subtle p-lg-3 p-3 rounded-3 ">
+	<div class="card-body ">
 		<h5 class="card-title text-danger text-capitalize">{doc.category?.[0].title}</h5>
 		<a href="https://chunavexpress.com/post/{doc.slug}" target="_blank" class="text-black"><h2 class="card-title">{@html title}</h2></a>
 		<span class="card-text text-end" ><small>{readingTime} min{readingTime > 1 ? 's' : ''} read</small> </span>
 	</div>
-	<img src={doc?.banner?.url} class="card-img-top rounded-3 shadow my-lg-3" alt={title} />
+	<img src={doc?.banner?.url} class="card-img-top  shadow my-lg-3" alt={title} />
 </div>
 
 <style>

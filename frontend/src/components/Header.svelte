@@ -35,8 +35,9 @@
 	};
 
 	onMount(() => {
-		var swiper = new Swiper('.swiper', {
+		new Swiper('.swiper', {
 			slidesPerView: 'auto',
+
 
 			freeMode: true,
 			loop: false,
@@ -44,6 +45,11 @@
 				delay: 3000,
 				disableOnInteraction: false,
 				stopOnLastSlide: false
+			},
+			breakpoints: {
+				768: {
+					spaceBetween: 25
+				}
 			}
 		});
 	});
@@ -83,11 +89,11 @@
 			</div>
 		</div>
 
-		<div class="  px-lg-5  ">
-			<div class=" rounded-2 shadow-sm   px-1 px-lg-0  bg-danger">
-				<div class="row rounded-2 shadow-sm bg-danger">
-					<div class="swiper col-lg-6 ">
-						<div class="swiper-wrapper mx">
+		<div class="  px-lg-5">
+			<div class=" rounded-2 shadow-sm px-1 px-lg-0 bg-danger">
+				<div class="d-flex rounded-2 shadow-sm bg-danger ">
+					<div class="  swiper ">
+						<div class="swiper-wrapper overflow-visible">
 							<div class="swiper-slide">
 								<li class="menu-item"><a href="/" class="text-white">Home</a></li>
 							</div>
@@ -210,7 +216,7 @@
 		}
 	}
 	.menu-item {
-		border-radius: 0.25em;
+
 		padding: 0;
 		// box-shadow: 0 0 0.2em #000;
 		a,
@@ -222,5 +228,21 @@
 			// margin-right: 1em;
 			color: #000000;
 		}
+	}
+	.menu-item a::after {
+		content: '';
+		display: block;
+		position: absolute;
+		bottom: 0;
+		left: 0 ;
+		width: 100%; /* Adjust as necessary */
+		height: 0.2em; /* Height of the bar */
+		background-color: white;
+		transform: scaleX(0);
+		transition: transform 0.25s ease;
+	}
+
+	.menu-item a:hover::after {
+		transform: scaleX(1);
 	}
 </style>
